@@ -323,8 +323,8 @@ static CCDirector *_sharedDirector = nil;
 
 		// it could be nil
 		if( view ) {
-//			[self createStatsLabel];
-			[self setGLDefaultValues];
+			[self createStatsLabel];
+            [self setGLDefaultValues];
 		}
 
 		// Dump info once OpenGL was initilized
@@ -576,7 +576,12 @@ static CCDirector *_sharedDirector = nil;
 
 - (void)setAnimationInterval:(NSTimeInterval)interval
 {
-	CCLOG(@"cocos2d: Director#setAnimationInterval. Override me");
+//	CCLOG(@"cocos2d: Director#setAnimationInterval. Override me");
+    _animationInterval = interval;
+//    if(_displayLink){
+//        [self stopAnimation];
+//        [self startAnimation];
+//    }
 }
 
 

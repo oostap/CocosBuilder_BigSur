@@ -110,8 +110,8 @@
 	GLint swapInt = 1;
 	[[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];	
 
-//	GLint order = -1;
-//	[[self openGLContext] setValues:&order forParameter:NSOpenGLCPSurfaceOrder];
+	GLint order = 10;
+	[[self openGLContext] setValues:&order forParameter:NSOpenGLCPSurfaceOrder];
 }
 
 - (NSUInteger) depthFormat
@@ -137,7 +137,7 @@
 	if(director.runningScene){
     [director drawScene];
   }
-//	[self setNeedsDisplay:YES];
+	[self setNeedsDisplay:YES];
 	
 	[self unlockOpenGLContext];
 }

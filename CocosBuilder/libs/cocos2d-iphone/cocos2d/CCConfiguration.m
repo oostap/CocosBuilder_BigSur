@@ -164,7 +164,6 @@ static char * glExtensions;
 -(void) getOpenGLvariables
 {
 	if( ! _openGLInitialized ) {
-
 		glExtensions = (char*) glGetString(GL_EXTENSIONS);
 
 		NSAssert( glExtensions, @"OpenGL not initialized!");
@@ -203,6 +202,8 @@ static char * glExtensions;
 		_supportsShareableVAO = [self checkForGLExtension:@"GL_APPLE_vertex_array_object"];
 		
 		_openGLInitialized = YES;
+        
+        [[CCConfiguration sharedConfiguration] dumpInfo];
 	}
 }
 

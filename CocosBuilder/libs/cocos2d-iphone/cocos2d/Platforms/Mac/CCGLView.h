@@ -31,6 +31,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "../../ccConfig.h"
+#import <MetalKit/MetalKit.h>
 
 //PROTOCOLS:
 
@@ -82,6 +83,8 @@
 
 /** Event delegate */
 @property (nonatomic, readwrite, assign) id<CCEventDelegate> eventDelegate;
+
+- (void)prepareOpenGL;
 
 /** initializes the CCGLView with a frame rect and an OpenGL context */
 - (id) initWithFrame:(NSRect)frameRect shareContext:(NSOpenGLContext*)context;

@@ -153,9 +153,19 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
 	
 	[director setDisplayStats:NO];
 	[director setProjection:kCCDirectorProjection2D];
-    //[cocosView openGLContext];
+
+
+    [cocosView clearGLContext];
+    [cocosView prepareOpenGL];
     
 	[director setView:cocosView];
+    cocosView.hidden = false;
+    [cocosView needsLayout];
+    [cocosView needsDisplay];
+    [cocosView setNeedsDisplay:true];
+    [cocosView setHidden:false];
+    [cocosView setShadow:false];
+    [guiWindow setContentView:cocosView];
     
 	// EXPERIMENTAL stuff.
 	// 'Effects' don't work correctly when autoscale is turned on.
@@ -166,7 +176,8 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
 	//[window setAcceptsMouseMovedEvents:YES];
 	
 	[director runWithScene:[CocosScene sceneWithAppDelegate:self]];
-	
+    
+    [splitHorizontalView setNeedsLayout:YES];
 	NSAssert( [NSThread currentThread] == [[CCDirector sharedDirector] runningThread], @"cocos2d shall run on the Main Thread. Compile CocosBuilder with CC_DIRECTOR_MAC_THREAD=2");
 }
 
@@ -201,7 +212,7 @@ static CocosBuilderAppDelegate* sharedAppDelegate;
     [tabBar setAllowsScrubbing:YES];
     [tabBar setCanCloseOnlyTab:YES];
     
-    [window setShowsToolbarButton:NO];
+    [window setShowsToolbarButton:YES];
 }
 
 - (void) setupToolbar

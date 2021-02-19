@@ -516,6 +516,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 - (void) drawScene
 {
+    [self.view update];
 	/* calculate "global" dt */
 	[self calculateDeltaTime];
 
